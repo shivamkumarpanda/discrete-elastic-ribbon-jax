@@ -92,8 +92,11 @@ def run_single(N, w_by_l, energy_model_name, total_time=12.5, dt=0.032):
     n_steps = len(result.qs)
     qs = np.stack(result.qs)
     times = np.array(result.times)
+    dts = np.array(result.dts) if result.dts else np.array([])
+    newton_iters = np.array(result.newton_iters) if result.newton_iters else np.array([])
+    total_newton = result.total_newton_iters
     final_t = times[-1] if len(times) > 0 else 0
-    print(f" → {elapsed:.1f}s, {n_steps} steps, t_final={final_t:.2f}")
+    print(f" → {elapsed:.1f}s, {n_steps} steps, {total_newton} NR iters, t_final={final_t:.2f}")
 
     save_data = {
         'qs': qs, 'times': times, 'elapsed': elapsed, 'n_steps': n_steps,
@@ -101,6 +104,7 @@ def run_single(N, w_by_l, energy_model_name, total_time=12.5, dt=0.032):
         'elastic_energies': result.elastic_energies,
         'N': N, 'w_by_l': w_by_l, 'total_time': total_time, 'dt': dt,
         'n_dof': int(q0.shape[0]), 'energy_model': energy_model_name,
+        'dts': dts, 'newton_iters': newton_iters, 'total_newton_iters': total_newton,
     }
 
     save_path = f'/data/shivam/Ribbon/bench_results/jax_{energy_model_name}_n{N}_{wl_str}.pkl'

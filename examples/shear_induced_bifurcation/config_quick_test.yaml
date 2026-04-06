@@ -1,0 +1,63 @@
+# Quick test config — small simulation to verify pipeline works
+geometry:
+  L: 0.1
+  w_by_l_ratio: "1/12"
+  h: 0.001
+  shell_h: 0
+
+material:
+  density: 1000
+  youngs_rod: 1.0e10
+  youngs_shell: 0
+  poisson_rod: 0.5
+  poisson_shell: 0
+
+simulation:
+  static_sim: false
+  two_d_sim: false
+  use_mid_edge: false
+  use_line_search: false
+  show_floor: false
+  log_data: true
+  log_step: 1
+  dt: 0.001
+  max_iter: 100
+  total_time: 0.1    # very short
+  plot_step: 1
+  tol: 0.001
+  ftol: 0.0001
+  dtol: 0.01
+
+environment:
+  gravity: [0.0, 0.0, -9.81]
+
+boundary_condition:
+  start_x_threshold: 0.01
+  end_x_threshold: 0.09
+  u0: 0.01
+  gravity_ramp_end_time: 0.05
+  gravity_during_ramp: [0.0, 0.0, -1000.0]
+  gravity_after_ramp: [0.0, 0.0, 0.0]
+  motion_phases:
+    - { start_time: 0.05, end_time: 0.1, direction: 0 }
+
+energy_model:
+  name: sano
+  sano_zeta: null
+
+adaptive_dt:
+  enabled: true
+  max_dq_threshold: 0.1
+  dt_reduction_factor: 0.5
+  min_dt_ratio: 1000000
+  max_dt_ratio: 2.0
+  max_dt_reductions: 40
+
+tracking:
+  track_forces: true
+  track_forces_all_nodes: false
+  track_condition_number: false
+  track_elastic_energy: true
+  track_material_directors: false
+
+nodes: [11]

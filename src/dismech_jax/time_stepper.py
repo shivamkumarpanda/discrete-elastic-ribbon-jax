@@ -255,6 +255,9 @@ class SimulationResult:
     condition_numbers: list
     forces: list
     force_times: list
+    dts: list = dataclasses.field(default_factory=list)           # per-step dt used
+    newton_iters: list = dataclasses.field(default_factory=list)  # per-step Newton iterations
+    total_newton_iters: int = 0                                   # cumulative Newton iterations
 
 
 # ─── TimeStepper ──────────────────────────────────────────────────────────────
@@ -610,6 +613,12 @@ class TimeStepper:
                 print(f"{'='*60}")
                 self.current_reg = self.base_reg
                 return result
+
+            # Track per-step metrics
+            step_newton = int(n_it) + 1  # +1 for the accepted attempt; retries also cost iters
+            result.total_newton_iters += step_newton
+            result.dts.append(dt)
+            result.newton_iters.append(step_newton)
 
             # Advance time by the dt that was actually used for this step
             dt_used = dt
