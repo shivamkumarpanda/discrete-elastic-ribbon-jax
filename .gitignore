@@ -8,3 +8,14 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Simulation output
+**/out/
+*.pkl
+
+# Auto-generated geometry files
+**/initial_geometry/
+
+# Claude/AI related
+.claude/
+CLAUDE.md
