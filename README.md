@@ -118,6 +118,11 @@ Shear-induced bifurcation simulation on CPU. Backward shear phase only (t = 7.55
 | 1/20 | Sano      | 2.90x      | 14.3     | 645   | 4102     | 6.4     |
 | 1/20 | Audoly    | 6.81x      | 33.7     | 703   | 4407     | 6.3     |
 | 1/12 | Kirchhoff | 164x       | 812.4    | 1227  | 7952     | 6.5     |
+| 1/12 | Sano      | 13.4x      | 66.1     | 1498  | 9468     | 6.3     |
+| 1/12 | Audoly    | 17.3x      | 85.4     | 2353  | 15092    | 6.4     |
+| 1/6  | Kirchhoff | 48.2x      | 238.6    | 2524  | 18593    | 7.4     |
+| 1/6  | Sano      | 54.8x      | 271.4    | 2500  | 17368    | 6.9     |
+| 1/6  | Audoly    | 54.6x      | 270.3    | 2465  | 16167    | 6.6     |
 
 *"x sim-time"* = wall-clock / simulated duration. Values < 1x mean faster than real-time.
 
