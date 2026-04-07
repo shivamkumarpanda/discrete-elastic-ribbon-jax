@@ -51,9 +51,9 @@ simulation:
   # Whether to log state at log_step intervals.
   log_data: true
   # Log every Nth step (1 = every step).
-  log_step: 1
+  log_step: 10
   # Base time step (s). May be reduced by adaptive stepper.
-  dt: 0.001
+  dt: 0.032
   # Max Newton iterations per step.
   max_iter: 100
   # Total simulation time (s).
@@ -123,7 +123,7 @@ adaptive_dt:
   # Max dt = base_dt * max_dt_ratio (e.g. 2.0).
   max_dt_ratio: 2.0
   # Max number of dt reductions per step before giving up.
-  max_dt_reductions: 40
+  max_dt_reductions: 80
 
 # -----------------------------------------------------------------------------
 # Tracking: what to record at each logged timestep and save in pkl
