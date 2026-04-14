@@ -16,6 +16,16 @@ wheels/
 # Auto-generated geometry files
 **/initial_geometry/
 
+# Rendering mesh data (regenerable from pkls) and captured frame dumps
+**/renderings/ribbon_data*.json
+**/renderings/ribbon_data*.js
+**/renderings/snapshots*/
+**/renderings/sano_*/
+**/renderings/audoly_*/
+**/renderings/kirchhoff_*/
+**/renderings/sadowsky_*/
+**/renderings/wunderlich_*/
+
 # Claude/AI related
 .claude/
 CLAUDE.md
